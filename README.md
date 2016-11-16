@@ -17,11 +17,11 @@ A scatter plot between between log-price and Lot area displays a clear positive 
 ![alt tag](https://cloud.githubusercontent.com/assets/23098804/20353390/f660cc64-ac1a-11e6-88a1-4872c8561225.png)
 
 
-Now let's focus on the relation between features. We start with numeric features. The following correlation matrix highlights some relatins between columns.
-	- A higher area above ground matches a wider garage, a higher number of baths and rooms (but not kitchen)
-	- Recent houses have a higher garage area
-	- The features Garage area  and Garage cars are almost redundant
-	- The overall quality is highly correlated with the following features: YearBuilt, YearRemodAdd,TotalBmtSF,1stFlrSF,GrLivArea,FullBath,GarageYrBlt,Garage Area (Garage Cars too)
+Now let's focus on the relation between features. We start with numeric features. The following correlation matrix highlights some relatins between columns:
+* A higher area above ground matches a wider garage, a higher number of baths and rooms (but not kitchen)
+* Recent houses have a higher garage area
+* The features Garage area  and Garage cars are almost redundant
+* The overall quality is highly correlated with the following features: YearBuilt, YearRemodAdd,TotalBmtSF,1stFlrSF,GrLivArea,FullBath,GarageYrBlt,Garage Area (Garage Cars too)
 	
 ![alt tag](https://cloud.githubusercontent.com/assets/23098804/20353396/fb8a2898-ac1a-11e6-8b27-9238f8cf0ea7.png)
 
