@@ -12,7 +12,7 @@ One of the first step of data exploration is to look at the target variable, the
 ![alt tag](https://cloud.githubusercontent.com/assets/23098804/20353374/edbcbba4-ac1a-11e6-908c-162ebb466169.png)
 
 
-A scatter plot between between log-price and Lot area displays a clear positive correlation between those two variable (obvious). By adding the dwelling type to this scatter (color of the points), despite the unbalance between types of houses, we can say that end unit town houses (green) are more expensive than detached family houses (blue) for a similar area.
+A scatter plot between between log-price and Lot area displays a clear positive correlation between those two variable (obvious). By adding the dwelling type to this scatter (color of the points), despite the unbalance between types of houses, we can say that end unit town houses (green) are more expensive than detached family houses (blue) for a similar lot area.
 
 ![alt tag](https://cloud.githubusercontent.com/assets/23098804/20353390/f660cc64-ac1a-11e6-88a1-4872c8561225.png)
 
