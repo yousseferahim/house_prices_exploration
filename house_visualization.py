@@ -8,11 +8,6 @@ import operator
 from sklearn.preprocessing import LabelEncoder
 
 
-# import os
-# directory="C:\\Users\\Youssef\\Documents\\Data_Science\\Kaggle\\House\\"
-# os.chdir(directory)
-# run visu_1
-
 
 print ('0	reading input files')
 directory="C:\\Users\\Youssef\\Documents\\Data_Science\\Kaggle\\House\\"
@@ -100,8 +95,10 @@ dftot.loc[dftot["GarageYrBlt"].isnull(),"GarageYrBlt"]=dftot.loc[dftot["GarageYr
 #For now, only the relevant column for a correlation plot are processed
 numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64'] 
 col_corr=list(dftot.select_dtypes(include=numerics).columns)
-col_corr.remove("MoSold")
-col_corr.remove("YrSold")
+col_del=["MoSold","YrSold","MSSubClass",'MiscVal']
+for col in col_del:
+	col_corr.remove(col)
+
 
 # The NAN valeues here correspond to properties that are not applicableare 
 #For example, when there is no garage, the garage area is 0 instead of NAN.
@@ -140,34 +137,57 @@ col_corr.remove("GarageCars")
 
 
 print "correlation between numeric features and SalePrice"
+
+#Scatter plots
+#We remove some columns for this plot because of their low cardinality or sparsity
+col_del=["Fireplaces","KitchenAbvGr","HalfBath",'PoolArea']
+for col in col_del:
+	col_corr.remove(col)
+
+
+fig = plt.figure(figsize=(33, 27))
+for i in range(0,len(col_corr)):
+	ax = fig.add_subplot(6,5,1+i)
+	ax.scatter(tr[col_corr[i]], price,alpha=0.7)
+	ax.set_title(col_corr[i])
+plt.show()
+
+# From that graph, we can see a strong correlation with between price and some
+#areas: Area above grade (+1st & 2nd floor), Basement area, garage area, Lot area
+#and also a clear stron correlation with the overall rates of material
+#and finish of the house (OverallQual). The trend is much weaker for 
+#the overall condition of the house (OverallCond)
+
+
+print "time changes in house prices"
+def quarter(x):
+	if x in [1,2,3]:
+		return 1
+	elif x in[4,5,6]:
+		return 2
+	elif x in[7,8,9]:
+		return 3
+	elif x in[10,11,12]:
+		return 4
+
+tr["QuartSold"]=tr["YrSold"]*10+tr["MoSold"].apply(quarter)
+
+tab_quart=np.exp(price).groupby(by=tr["QuartSold"]).mean().sort_index()
+tab_quart_count=np.exp(price).groupby(by=tr["QuartSold"]).count().sort_index()
+my_xticks = [str(x)[0:4]+"Q"+str(x)[4] for x in list(tab_quart.index)]
+
+plt.figure(figsize=[15,10])
+plt.clf()
+plt.cla()
+plt.plot(range(0,len(tab_quart)),list(tab_quart))
+plt.title("Average selling price per quarter")
+plt.xticks(range(0,len(tab_quart)),my_xticks)
+plt.show()
+
+#With only 6 house sold, the third quarter of 2006 is not relevant. The
+#other quarters includes at least 40 records.
+#To account for variablility in the type of houses sold, this chart can be done
+#with a correction including Grade level area, Overall quality, etc with  a linear
+#regression
+	
 #Work in progress
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
