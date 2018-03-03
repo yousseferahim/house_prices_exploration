@@ -35,5 +35,3 @@ How about the time of the year when the sale occurs? Does it havee an impact? We
 
 ![alt tag](https://cloud.githubusercontent.com/assets/23098804/20385131/731867f8-acb6-11e6-8808-5ddda93c083f.png)
 
-
-Work in progress
